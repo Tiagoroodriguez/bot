@@ -26,7 +26,7 @@ exports.handleMessage = async (req, res) => {
     // Responder al mensaje
     client.messages.create({
         body: responseMessage,
-        from: process.env.TWILIO_PHONE_NUMBER,
+        from: process.env.TWILIO_WHATSAPP_NUMBER,
         to: from
     })
     .then(message => {
