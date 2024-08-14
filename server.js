@@ -22,8 +22,6 @@ mongoose.connect(process.env.MONGODB_URL, {
   console.error('Error al conectar a MongoDB', error);
 });
 
-
-
 // Rutas
 app.use('/api/canchas', canchaRoutes);
 app.use('/api/reservas', reservaRoutes);

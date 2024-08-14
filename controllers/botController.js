@@ -2,6 +2,7 @@ const client = require('../twilioClient');
 
 
 exports.handleMessage = async (req, res) => {
+    console.log('Mensaje entrante:', req.body);
     const incomingMessage = req.body.Body.trim().toLowerCase();
     const from = req.body.From;
 
@@ -25,7 +26,7 @@ exports.handleMessage = async (req, res) => {
     // Responder al mensaje
     client.messages.create({
         body: responseMessage,
-        from: 'whatsapp:+14155238886',
+        from: process.env.TWILIO_PHONE_NUMBER,
         to: from
     })
     .then(message => {
@@ -36,5 +37,4 @@ exports.handleMessage = async (req, res) => {
         console.error('Error al enviar el mensaje de WhatsApp:', error);
         res.status(500).send();
     });
-
 };
